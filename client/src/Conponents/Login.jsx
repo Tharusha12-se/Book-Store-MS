@@ -1,5 +1,18 @@
+import { useState } from 'react';
 import '../css/Login.css';
+import axios from 'axios'
 const Login = () => {
+
+  const [username, setUserName] = useState('')
+  const [password, setPassword] = useState('')
+  const [role, setRole] = useState('admin')
+
+  const handleSubmit = () => {
+     axios.post('http://localhost:3001/auth/login', {username, password, role})
+     .then(res => console.log(res))
+     .catch(err => console.log(err))
+  }
+
   return (
     <div className='login-page'>
       <div className="login-container">
@@ -13,10 +26,10 @@ const Login = () => {
             <div className="input-with-icon">
               <i className="fas fa-envelope"></i>
               <input 
-                type='email' 
-                id='email' 
-                placeholder='admin@gmail.com'
-                defaultValue="admin@gmail.com"
+                type='username' 
+                id='username' 
+                placeholder='Enter Username'
+                onChange={(e) => setUserName(e.target.value)}
               />
             </div>
           </div>
@@ -28,6 +41,7 @@ const Login = () => {
                 type='password' 
                 id='password' 
                 placeholder='Password'
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
           </div>
@@ -35,7 +49,7 @@ const Login = () => {
           <div className="form-group">
             <div className="select-with-icon">
               <i className="fas fa-user-tag"></i>
-              <select name='role' id='role'>
+              <select name='role' id='role' onChange={(e) => setRole(e.target.value)}>
                 <option value='admin'>Admin</option>
                 <option value='student'>Student</option>
               </select>
@@ -50,7 +64,7 @@ const Login = () => {
             </label>
           </div>
 
-          <button className='btn-login'>
+          <button className='btn-login' onClick={handleSubmit}>
             Login
           </button>
         </div>
