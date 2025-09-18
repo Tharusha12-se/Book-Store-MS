@@ -3,6 +3,8 @@ import Navbar from './Conponents/Navbar'
 import Home from './Conponents/Home'
 import Login from './Conponents/Login'
 import Books from './Conponents/Books'
+import Dashboard from './Conponents/dashboard'
+import AddStudent from './Conponents/AddStudent'
 function App() {
     return (
         <BrowserRouter>
@@ -11,6 +13,8 @@ function App() {
                 <Route path="/" element={<Home/>}></Route>
                 <Route path="/books" element={<Books/>}></Route>
                 <Route path="/login" element={<Login/>}></Route>
+                <Route path="/dashboard" element={<Dashboard/>}></Route>
+                <Route path="/addstudent" element={<AddStudent/>}></Route>
             </Routes>
         </BrowserRouter>
     )

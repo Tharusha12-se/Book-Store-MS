@@ -24,6 +24,18 @@ const Navbar = () => {
             <i className="fas fa-book"></i>
             Books
           </Link>
+          <Link to="/addbooks" className='navbar-link' onClick={() => setIsMenuOpen(false)}>
+            <i className="fas fa-plus-circle"></i>
+            Add Books
+          </Link>
+          <Link to="/addstudent" className='navbar-link' onClick={() => setIsMenuOpen(false)}>
+            <i className="fas fa-user-plus"></i>
+            Add Student
+          </Link>
+          <Link to="/dashboard" className='navbar-link' onClick={() => setIsMenuOpen(false)}>
+            <i className="fas fa-tachometer-alt"></i>
+            Dashboard
+          </Link>
           <Link to="/login" className='navbar-link navbar-login' onClick={() => setIsMenuOpen(false)}>
             <i className="fas fa-user"></i>
             Login
