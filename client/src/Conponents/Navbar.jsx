@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../css/Navbar.css';
 
-const Navbar = () => {
+const Navbar = ({role}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -24,6 +24,8 @@ const Navbar = () => {
             <i className="fas fa-book"></i>
             Books
           </Link>
+
+          {role === 'admin' && <>
           <Link to="/addbooks" className='navbar-link' onClick={() => setIsMenuOpen(false)}>
             <i className="fas fa-plus-circle"></i>
             Add Books
@@ -36,10 +38,20 @@ const Navbar = () => {
             <i className="fas fa-tachometer-alt"></i>
             Dashboard
           </Link>
+          </>}
+          {role === "" ? 
           <Link to="/login" className='navbar-link navbar-login' onClick={() => setIsMenuOpen(false)}>
             <i className="fas fa-user"></i>
             Login
+          </Link>   : 
+          <Link to="/login" className='navbar-link navbar-login' onClick={() => setIsMenuOpen(false)}>
+            <i className="fas fa-user"></i>
+            Logout
           </Link>
+          }
+
+          
+          
         </div>
         
         <div className='menu-toggle' onClick={toggleMenu}>

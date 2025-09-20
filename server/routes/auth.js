@@ -27,6 +27,19 @@ router.post('/login', async (req, res) => {
 
     }else if(role === 'student'){
 
+        const student = await Student.findOne({username})
+        if(!student){
+            return res.json({message: "Student not registered"})
+        }
+
+        const validPassword = await bcrypt.compare(password, student.password)
+        if(!validPassword){
+            return res.json({message: "Wrong password"})
+        }
+        const token = jwt.sign({username: student.username, role: 'student'}, process.env.Student_Key)
+        res.cookie('token', token, {httpOnly : true, secure: true})
+        return res.json({login: true, role: 'student'})
+
     }else {
 
     }
@@ -61,28 +74,23 @@ router.post('/reset-password', async (req, res) => {
     }
 });
 
-//add student
-router.post('/add-student', async (req, res) => {
-    try{
-    const {role, username, password, grade} = req.body;
-    const student = Student.findOne({username})
-
-    if(student){
-        return res.json({message: "Student already registered"})
+const verifyAdmin = (req, res, next) => {
+    const token = req.cookies.token;
+    if(!token){
+        return res.json("message: Invalid Admin")
+    }else{
+       jwt.verify(token, process.env.Admin_Key, (err, decoded) => {
+         if(err) {
+            return res.json("message: Invalid Token")
+         }else{
+            req.username = decoded.username;
+            req.role =decoded.role;
+            next()
+         }
+       })
     }
-        const hashePassword = await bcrypt.hash(password, 10)
-        const newStudent = new Student({
-            role: role,
-            username,
-            password: hashePassword,
-            grade
-        })
-        await newStudent.save()
-        return res.json({registered: true})
-    
-    }catch(err){
-        return res.json({message: "Error in student registration"})
-    }
-})
+}
 
-export {router as AdminRouter}
+// logout
+
+export {router as AdminRouter, verifyAdmin}

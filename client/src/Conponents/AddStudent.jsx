@@ -15,10 +15,11 @@ const AddStudent = () => {
      e.preventDefault()
      axios.post('http://localhost:3001/student/register', {roll, username, password, grade})
      .then(res => {
-      
-        console.log(res)
-        navigate('/dashboard')
-      
+          if(res.data.registered){
+            alert("Student registered..")
+            navigate('/dashboard')
+          }
+          console.log(res)      
      })
      .catch(err => console.log(err))
   }
