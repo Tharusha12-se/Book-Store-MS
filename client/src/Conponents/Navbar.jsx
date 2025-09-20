@@ -26,7 +26,7 @@ const Navbar = ({role}) => {
           </Link>
 
           {role === 'admin' && <>
-          <Link to="/addbooks" className='navbar-link' onClick={() => setIsMenuOpen(false)}>
+          <Link to="/addbook" className='navbar-link' onClick={() => setIsMenuOpen(false)}>
             <i className="fas fa-plus-circle"></i>
             Add Books
           </Link>
@@ -44,7 +44,7 @@ const Navbar = ({role}) => {
             <i className="fas fa-user"></i>
             Login
           </Link>   : 
-          <Link to="/login" className='navbar-link navbar-login' onClick={() => setIsMenuOpen(false)}>
+          <Link to="/logout" className='navbar-link navbar-login' onClick={() => setIsMenuOpen(false)}>
             <i className="fas fa-user"></i>
             Logout
           </Link>

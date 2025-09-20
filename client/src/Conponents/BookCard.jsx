@@ -1,0 +1,42 @@
+import {Link} from 'react-router-dom'
+const BookCard = ({ book, className = "" }) => {
+    const { name, auther, imageUrl } = book;
+
+    const handleEdit = () => {
+        console.log("Edit book:", book);
+        // Add edit functionality here
+    }
+
+    const handleDelete = () => {
+        console.log("Delete book:", book);
+        // Add delete functionality here
+    }
+
+    return (
+        <div className={`book-card ${className}`}>
+            <div className="book-image-container">
+                <img src={imageUrl} alt={name} className='book-image' />
+                <div className="book-overlay"></div>
+                
+            </div>
+            
+            <div className="book-details">
+                <h3 className="book-title">{name}</h3>
+                <p className="book-author">{auther}</p>
+                
+            </div>
+
+            <div className="book-action">
+                <button onClick={handleEdit}>
+                    <i className="fas fa-edit"></i> 
+                    <Link to={`/book/${book._id}`}> EDIT</Link>
+                </button>
+                <button onClick={handleDelete}>
+                    <i className="fas fa-trash"></i> DELETE
+                </button>
+            </div>
+        </div>
+    )
+}
+
+export default BookCard

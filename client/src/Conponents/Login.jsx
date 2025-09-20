@@ -2,7 +2,7 @@ import { useState } from 'react';
 import '../css/Login.css';
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
-const Login = ({setRole}) => {
+const Login = ({setRoleVar}) => {
 
   const [username, setUserName] = useState('')
   const [password, setPassword] = useState('')
@@ -14,10 +14,10 @@ const Login = ({setRole}) => {
      axios.post('http://localhost:3001/auth/login', {username, password, role})
      .then(res => {
       if(res.data.login && res.data.role === 'admin'){
-        setRole('admin')
+        setRoleVar('admin')
         navigate('/dashboard')
       }else if(res.data.login && res.data.role === 'student'){
-        setRole('student')
+        setRoleVar('student')
         navigate('/')
       }
      })
