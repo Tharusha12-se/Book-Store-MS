@@ -1,0 +1,169 @@
+.delete-book-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    padding: 2rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.delete-confirm-modal {
+    background: rgba(30, 30, 30, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.modal-header {
+    margin-bottom: 2rem;
+}
+
+.modal-header i {
+    font-size: 3rem;
+    color: #ff2a6d;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.modal-header h2 {
+    color: #ffffff;
+    font-size: 1.8rem;
+    margin: 0;
+    background: linear-gradient(135deg, #ff2a6d, #dc2626);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.modal-body {
+    margin-bottom: 2rem;
+}
+
+.modal-body p {
+    color: #cccccc;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.book-preview {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.book-preview h3 {
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.book-preview p {
+    color: #00d4ff;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.preview-image {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.warning-text {
+    color: #ff2a6d !important;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn-cancel, .btn-delete {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-cancel {
+    background: transparent;
+    color: #00d4ff;
+    border: 2px solid #00d4ff;
+}
+
+.btn-cancel:hover {
+    background: rgba(0, 212, 255, 0.1);
+}
+
+.btn-delete {
+    background: linear-gradient(135deg, #ff2a6d, #dc2626);
+    color: white;
+}
+
+.btn-delete:hover {
+    background: linear-gradient(135deg, #ff4d85, #e63c3c);
+    transform: translateY(-2px);
+}
+
+.btn-cancel:disabled, .btn-delete:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.delete-content {
+    text-align: center;
+    color: white;
+}
+
+.delete-content i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.delete-content h2 {
+    margin-bottom: 1rem;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 576px) {
+    .delete-book-container {
+        padding: 1rem;
+    }
+    
+    .delete-confirm-modal {
+        padding: 2rem 1.5rem;
+    }
+    
+    .modal-actions {
+        flex-direction: column;
+    }
+    
+    .btn-cancel, .btn-delete {
+        width: 100%;
+        justify-content: center;
+    }
+}

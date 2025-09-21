@@ -31,8 +31,9 @@ const BookCard = ({ book, className = "" }) => {
                     <i className="fas fa-edit"></i> 
                     <Link to={`/book/${book._id}`}> EDIT</Link>
                 </button>
-                <button onClick={handleDelete}>
-                    <i className="fas fa-trash"></i> DELETE
+                <button onClick={handleEdit}>
+                    <i className="fas fa-trash"></i> 
+                    <Link to={`/delete-book/${book._id}`} > DELETE</Link>
                 </button>
             </div>
         </div>
