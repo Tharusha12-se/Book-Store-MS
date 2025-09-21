@@ -1,16 +1,8 @@
 import {Link} from 'react-router-dom'
-const BookCard = ({ book, className = "" }) => {
+const BookCard = ({ book, className = "" ,role }) => {
     const { name, auther, imageUrl } = book;
 
-    const handleEdit = () => {
-        console.log("Edit book:", book);
-        // Add edit functionality here
-    }
-
-    const handleDelete = () => {
-        console.log("Delete book:", book);
-        // Add delete functionality here
-    }
+   
 
     return (
         <div className={`book-card ${className}`}>
@@ -26,16 +18,23 @@ const BookCard = ({ book, className = "" }) => {
                 
             </div>
 
-            <div className="book-action">
-                <button onClick={handleEdit}>
+            {
+                role === "admin" &&
+
+                 <div className="book-action">
+                <button>
                     <i className="fas fa-edit"></i> 
                     <Link to={`/book/${book._id}`}> EDIT</Link>
                 </button>
-                <button onClick={handleEdit}>
+                <button >
                     <i className="fas fa-trash"></i> 
                     <Link to={`/delete-book/${book._id}`} > DELETE</Link>
                 </button>
             </div>
+
+            }
+
+           
         </div>
     )
 }

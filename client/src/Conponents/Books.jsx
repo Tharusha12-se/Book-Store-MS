@@ -4,7 +4,7 @@ import { useState } from "react"
 import BookCard from "./BookCard"
 import "../css/Books.css"
 
-const Books = () => {
+const Books = ({role}) => {
   const [books, setBooks] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState("")
@@ -54,6 +54,7 @@ const Books = () => {
             key={book._id || book.id} 
             book={book} 
             className={index < 3 ? "featured" : ""}
+            role = {role}
           />
         ))
       )}
